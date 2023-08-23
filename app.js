@@ -24,7 +24,7 @@ app.post('/login', jsonParser, (req, res) => {
     if (username === 'globe' && password === 'group') {
         userSessionData = {
             token: crypto.randomBytes(20).toString('hex'),
-            expiredTime: Date.now() + 3500 * 1000 // 35s token validity
+            expiredTime: Date.now() + 2 * 60 * 1000 // 2min token validity
         }
         res.send(userSessionData);
     } else {
