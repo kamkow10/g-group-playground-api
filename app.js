@@ -32,7 +32,19 @@ app.post('/login', jsonParser, (req, res) => {
     }
 });
 
-// Authorized-only endpoints
+app.get('/largeList', (req, res) => {
+    const count = req.query?.count;
+    if (!count) {
+        return res.status(400).send('Incorrect input data');
+    }
+    const largeList = [];
+    for (let i = 1; i <= count; i++) {
+        largeList.push(`item #${i}`);
+    }
+    res.send(largeList);
+})
+
+// Authorized-only endpoints - tasks
 
 app.use((req, res, next) => {
     if (!req.headers.authorization) {
