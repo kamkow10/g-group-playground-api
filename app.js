@@ -44,6 +44,18 @@ app.get('/largeList', (req, res) => {
     res.send(largeList);
 })
 
+app.get('/largeObjectList', (req, res) => {
+    const count = req.query?.count;
+    if (!count) {
+        return res.status(400).send('Incorrect input data');
+    }
+    const largeList = [];
+    for (let i = 1; i <= count; i++) {
+        largeList.push({id: i, value: i * 2});
+    }
+    res.send(largeList);
+})
+
 // Authorized-only endpoints - tasks
 
 app.use((req, res, next) => {
