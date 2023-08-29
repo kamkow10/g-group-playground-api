@@ -56,6 +56,24 @@ app.get('/largeObjectList', (req, res) => {
     res.send(largeList);
 })
 
+app.get('/countries', (req, res) => {
+    res.send([
+        'Poland',
+        'Germany',
+        'USA',
+        'France'
+    ]);
+})
+
+app.get('/names', (req, res) => {
+    res.send([
+        'Adam',
+        'Jerry',
+        'Rick',
+        'Ada'
+    ]);
+})
+
 // Authorized-only endpoints - tasks
 
 app.use((req, res, next) => {
